@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Water Quality Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #0077b6, #00b4d8);
+            color: white;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            color: black;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        input {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            width: 50%;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background: #0077b6;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #023e8a;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>💧 Enter Water Quality Parameters</h2>
+
+    <form action="/get_values" method="POST">
+
+        <div class="grid">
+
+            <!-- Generate fields -->
+            <div class="field"><label>Aluminium</label><input type="number" step="any" name="aluminium" required></div>
+            <div class="field"><label>Ammonia</label><input type="number" step="any" name="ammonia" required></div>
+
+            <div class="field"><label>Arsenic</label><input type="number" step="any" name="arsenic" required></div>
+            <div class="field"><label>Barium</label><input type="number" step="any" name="barium" required></div>
+
+            <div class="field"><label>Cadmium</label><input type="number" step="any" name="cadmium" required></div>
+            <div class="field"><label>Chloramine</label><input type="number" step="any" name="chloramine" required></div>
+
+            <div class="field"><label>Chromium</label><input type="number" step="any" name="chromium" required></div>
+            <div class="field"><label>Copper</label><input type="number" step="any" name="copper" required></div>
+
+            <div class="field"><label>Fluoride</label><input type="number" step="any" name="flouride" required></div>
+            <div class="field"><label>Bacteria</label><input type="number" step="any" name="bacteria" required></div>
+
+            <div class="field"><label>Viruses</label><input type="number" step="any" name="viruses" required></div>
+            <div class="field"><label>Lead</label><input type="number" step="any" name="lead" required></div>
+
+            <div class="field"><label>Nitrates</label><input type="number" step="any" name="nitrates" required></div>
+            <div class="field"><label>Nitrites</label><input type="number" step="any" name="nitrites" required></div>
+
+            <div class="field"><label>Mercury</label><input type="number" step="any" name="mercury" required></div>
+            <div class="field"><label>Perchlorate</label><input type="number" step="any" name="perchlorate" required></div>
+
+            <div class="field"><label>Radium</label><input type="number" step="any" name="radium" required></div>
+            <div class="field"><label>Selenium</label><input type="number" step="any" name="selenium" required></div>
+
+            <div class="field"><label>Silver</label><input type="number" step="any" name="silver" required></div>
+            <div class="field"><label>Uranium</label><input type="number" step="any" name="uranium" required></div>
+
+        </div>
+
+        <button type="submit">Predict Water Quality</button>
+
+    </form>
+
+    <div>
+    {% if result is defined %}
+    <h3>Result:</h3>
+
+    {% if result == 0 %}
+        <h3>Not good for drinking</h3>
+    {% elif result == 1 %}
+        <h3>Good for drinking</h3>
+    {% else %}
+        <h3>Invalid prediction</h3>
+    {% endif %}
+    {% endif %}
+    </div>
+
+</div>
+</body>
+</html>
